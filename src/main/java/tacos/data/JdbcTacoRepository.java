@@ -27,8 +27,8 @@ public class JdbcTacoRepository implements TacoRepository {
   public Taco save(Taco taco){
     long tacoId = saveTacoInfo(taco);
     taco.setId(tacoId);
-    for(Ingredient ingredient : taco.getIngredients()){
-      saveIngredientToTaco(ingredient, tacoId);
+    for(String ingredient : taco.getIngredients()){
+      //saveIngredientToTaco(ingredient, tacoId);
     }
 
     return taco;
