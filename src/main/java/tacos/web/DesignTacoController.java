@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 import tacos.Order;
 import tacos.Taco;
-import tacos.Ingredient.Type;
 import tacos.data.IngredientRepository;
 import tacos.data.TacoRepository;
 
@@ -51,9 +50,8 @@ public class DesignTacoController {
         List<Ingredient> ingredients = new ArrayList<>();
         ingredientRepository.findAll().forEach(i -> ingredients.add(i));
 
-        Type[] types = Ingredient.Type.values();
-        for(Type type: types) {
-            model.addAttribute(type.toString().toLowerCase(),
+        for(String type: Ingredient.Type) {
+            model.addAttribute(type.toLowerCase(),
                     filterByType(ingredients, type));
         }
     }
@@ -81,7 +79,7 @@ public class DesignTacoController {
       return "redirect:/orders/current";
     }
 
-    private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type){
+    private List<Ingredient> filterByType(List<Ingredient> ingredients, String type){
         return ingredients.stream().filter(x -> x.getType().equals(type)).collect(Collectors.toList());
     }
 }

@@ -19,7 +19,7 @@ public class Ingredient {
     private final String name;
     private final String type;
 
-    public static enum Type{
-        WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
-    }
+    public static final String[] Type = {
+        "WRAP", "PROTEIN", "VEGGIES", "CHEESE", "SAUCE"
+    };
 }
